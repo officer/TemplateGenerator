@@ -38,7 +38,7 @@ class BaseGenerator:
                 fp.write(value)
 
 
-              self.logger.info("Generating tests...")
+              self.logger.debug("Generating tests...")
               # generate tests
               test_output = test_template.render(
                   {

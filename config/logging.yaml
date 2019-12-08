@@ -5,7 +5,7 @@ keys=root
 keys=consoleHandler
 
 [logger_root]
-level=DEBUG
+level=INFO
 handlers=consoleHandler
 
 [handler_consoleHandler]

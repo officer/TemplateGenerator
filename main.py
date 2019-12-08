@@ -14,14 +14,11 @@ class ProblemGenerator:
         self.logger = getLogger(__name__)
 
     def generate(self, site_name, contest_name):
-
         if not os.path.exists("%s/%s/tests" % (os.getcwd(), contest_name)):
             self.logger.debug("Creating test directories...")
             os.makedirs("%s/%s/tests" % (os.getcwd(), contest_name))
             Path("%s/%s/__init__.py" % (os.getcwd(), contest_name)).touch()
             
-
-
         if site_name == "atcoder":
             self.logger.info("Generator... AtCoderProblemRetriver")
             generator = AtCoderProblemRetriver.AtCoderProblemRetriver()
@@ -33,5 +30,4 @@ class ProblemGenerator:
         problem_generator.generate_test_files(problems, contest_name)
 
 if __name__ == "__main__":
-    config.fileConfig("config/logging.yaml")
     core.Fire(ProblemGenerator)
