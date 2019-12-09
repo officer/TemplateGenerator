@@ -68,4 +68,4 @@ class AtCoderProblemRetriver():
         "input": ins,
         "output": outs
       })
-    return res
+    return res[:int(len(res)/2)]

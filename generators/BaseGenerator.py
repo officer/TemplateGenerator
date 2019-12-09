@@ -37,18 +37,17 @@ class BaseGenerator:
                 self.logger.debug("Writing into %s" % path)
                 fp.write(value)
 
+        self.logger.debug("Generating tests...")
+        # generate tests
+        test_output = test_template.render(
+            {
+                "problem_index": problem_index,
+                "contest_name": contest_name,
+                "indexes": range(len(datas))
+            }
+        )
 
-              self.logger.debug("Generating tests...")
-              # generate tests
-              test_output = test_template.render(
-                  {
-                      "problem_index": problem_index,
-                      "contest_name": contest_name,
-                      "index": index
-                  }
-              )
-
-              path = "%s/%s/tests/%s/test_%s_%s_%d.py" % (os.getcwd(), contest_name, problem_index, contest_name, problem_index, index)
-              with open(path, "w") as fp:
-                  self.logger.debug("Writing into %s" % path)
-                  fp.write(test_output)
+        path = "%s/%s/tests/%s/test_%s_%s.py" % (os.getcwd(), contest_name, problem_index, contest_name, problem_index)
+        with open(path, "w") as fp:
+            self.logger.debug("Writing into %s" % path)
+            fp.write(test_output)
